@@ -4,11 +4,12 @@ const HtmlWebpackPlugin = require("html-webpack-plugin");
 const CleanWebpackPlugin = require("clean-webpack-plugin");
 const UglifyJsPlugin = require("uglifyjs-webpack-plugin");
 const MinifyPlugin = require("babel-minify-webpack-plugin");
+const VueLoaderPlugin = require('vue-loader/lib/plugin')
 
 module.exports = {
     mode:"production",
     entry:{
-        main:"./src/index.js"
+        main:"./src/app.js"
     },
     output:{
         filename:'app.js',
@@ -54,16 +55,25 @@ module.exports = {
         // new webpack.HotModuleReplacementPlugin({
             
         // })
+        new VueLoaderPlugin(),
         
     ],
     module:{
         rules:[
             {
+                test:/\.vue$/,
+                exclude:/(node_modules|bower_components)/,
+                use:{
+                    loader:'vue-loader',
+                    
+                }
+            },
+            {
                 test:/\.less$/,
                 use:[
                     {loader:'style-loader'},
                     {loader:'css-loader'},
-                    {loader:'less-laoder'}
+                    {loader:'less-loader'}
                 ]
             },
             {
@@ -77,15 +87,21 @@ module.exports = {
                     }
                 ]
             },{
-                test:/\.js/,
+                test:/\.js$/,
                 exclude:/(node_modules|bower_components)/,
                 use:{
                     loader:'babel-loader',
                     options:{
-                        presets:['@babel/preset-env']
+                        // presets:['@babel/preset-env']
                     }
                 }
             }
         ]
+    },
+    resolve:{
+        alias:{
+            Page:path.resolve(__dirname,'src/page'),
+            
+        }
     }
 }

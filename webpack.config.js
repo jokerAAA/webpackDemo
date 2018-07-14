@@ -12,17 +12,27 @@ module.exports = {
     module:{
         rules:[
             {
-                test:/\.less&/,
+                test:/\.less$/,
                 use:[
-                    'style-loader',
-                    'css-loader',
-                    'less-laoder'
+                    {loader:'style-loader'},
+                    {loader:'css-loader'},
+                    {loader:'less-laoder'}
                 ]
             },
             {
-                test:/\.(png|jpg|jpeg|gif|svg)/,
+                test:/\.(png|jpg|jpeg|gif|svg)$/,
                 use:[
-                    'file-loader'
+                    {
+                        loader:'url-loader',
+                        options:{
+                            limit:8192
+                        }
+                    }
+                ]
+            },{
+                test:/\.js/,
+                use:[
+
                 ]
             }
         ]

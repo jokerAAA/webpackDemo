@@ -3,6 +3,7 @@ const path = require("path");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
 const CleanWebpackPlugin = require("clean-webpack-plugin");
 const UglifyJsPlugin = require("uglifyjs-webpack-plugin");
+const MinifyPlugin = require("babel-minify-webpack-plugin");
 
 module.exports = {
     entry:{
@@ -33,11 +34,25 @@ module.exports = {
         }),
         /**
          *  文档地址：https://github.com/webpack-contrib/uglifyjs-webpack-plugin
-         * 用于压缩混淆js代码
+         * 用于混淆js代码
          */
         new UglifyJsPlugin({
             test: /\.js($|\?)/i,
-        })
+        }),
+        /**
+         * https://www.webpackjs.com/plugins/babel-minify-webpack-plugin/
+         * 用于压缩代码，与loader中略有不同
+         */
+        new MinifyPlugin({
+
+        }),
+        /**
+         * https://www.webpackjs.com/plugins/hot-module-replacement-plugin/
+         * 永远不要在生产环境中启用，随后做生产环境和开发环境的单独配置
+         */
+        // new webpack.HotModuleReplacementPlugin({
+            
+        // })
         
     ],
     module:{

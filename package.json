@@ -1,0 +1,32 @@
+{
+  "name": "webpackDemo",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jokerAAA/webpackDemo.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/jokerAAA/webpackDemo/issues"
+  },
+  "homepage": "https://github.com/jokerAAA/webpackDemo#readme",
+  "devDependencies": {
+    "babel-loader": "^7.1.5",
+    "css-loader": "^1.0.0",
+    "less-loader": "^4.1.0",
+    "style-loader": "^0.21.0",
+    "webpack": "^4.16.0",
+    "webpack-dev-server": "^3.1.4"
+  },
+  "dependencies": {
+    "axios": "^0.18.0",
+    "vue": "^2.5.16"
+  }
+}

@@ -1,5 +1,6 @@
 const webpack = require("webpack");
-const path = require("path")
+const path = require("path");
+const HtmlWebpackPlugin = require("html-webpack-plugin")
 
 module.exports = {
     entry:{
@@ -9,6 +10,15 @@ module.exports = {
         filename:'app.js',
         path:path.join(__dirname,'./dist') 
     },
+    plugins:[
+        new HtmlWebpackPlugin({
+            /* 具体见文档：https://github.com/jantimon/html-webpack-plugin */
+            title:"test",
+            filename:"index.html",
+            template:"./index.html",
+            inject:true
+        })
+    ],
     module:{
         rules:[
             {

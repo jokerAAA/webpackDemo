@@ -1,6 +1,7 @@
 const webpack = require("webpack");
 const path = require("path");
-const HtmlWebpackPlugin = require("html-webpack-plugin")
+const HtmlWebpackPlugin = require("html-webpack-plugin");
+const CleanWebpackPlugin = require("clean-webpack-plugin");
 
 module.exports = {
     entry:{
@@ -11,13 +12,17 @@ module.exports = {
         path:path.join(__dirname,'./dist') 
     },
     plugins:[
+        /* 文档地址:https://github.com/johnagan/clean-webpack-plugin */
+        new CleanWebpackPlugin('dist',{
+            
+        }),
         new HtmlWebpackPlugin({
             /* 具体见文档：https://github.com/jantimon/html-webpack-plugin */
             title:"test",
             filename:"index.html",
             template:"./index.html",
             inject:true
-        })
+        }),
     ],
     module:{
         rules:[
